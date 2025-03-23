@@ -1,0 +1,60 @@
+import pprint
+
+def pokaziCrke(beseda, crke):
+    """Vrne besedo, ki je sestavljena iz črk, ki so v množici crke in pik, ki
+    so nadomestilo za črke, ki niso v množici"""
+    koncna_beseda = ""
+    for crka in beseda:
+        if crka in crke:
+            koncna_beseda += crka
+        else:
+            koncna_beseda += (".")
+    return koncna_beseda
+
+def podobna(beseda, vse_besede):
+    """Vrne besedo, ki ima v tabeli vse_besede največ skupnih črk kot parameter beseda"""
+    gledana_beseda = beseda.lower()
+    gledane_crke = set(gledana_beseda)
+    najvec_crk = -1
+    for izbrana_beseda in vse_besede:
+        crke = len(gledane_crke.intersection(set(izbrana_beseda)))
+        if crke > najvec_crk:
+            najvecja_beseda = izbrana_beseda
+            najvec_crk = crke
+    return najvecja_beseda
+
+def samo_enkrat(s):
+    """Vrne True, če se v nizu s vsi znaki pojavijo samo enkrat, drugače pa False"""
+    for i, znak in enumerate(s):
+        if znak in s[:i]:
+            return False
+    return True
+
+
+
+def slovar_izrazov4():
+    mnozica = {"4 * 4", "4 + 4", "4 - 4", "4 / 4"}
+    operacije = {" + ", " - ", " * ", " / "}
+    slov = dict()
+    for prvi in mnozica:
+        for drugi in mnozica:
+            for znak in operacije:
+                racun = prvi + znak + drugi
+                pop_racun = racun.replace("/", "//")
+                vrednost = eval(pop_racun)
+                if vrednost in slov:
+                    slov[vrednost].append(racun)
+                else:
+                    slov[vrednost] = [racun]
+    pprint.pprint(slov)
+    return slov
+
+
+slov = slovar_izrazov4()
+k = int(input('Število primerov: '))
+for _ in range(k):
+    n = int(input('Katero število: '))
+    if n in slov:
+        print(slov[n],'=', n)
+    else:
+        print('Ne gre!')
