@@ -1,0 +1,15 @@
+Ta program v Pythonu izračuna t.i. "parent gap", kar je interval v tednih med Materinskim dnevom in Očetovim dnevom v poljubnem letu. Materinski dan se praznuje drugo nedeljo v maju, Očetov dan pa tretjo nedeljo v juniju. Program kot vhod vzame leto in vrne razmak v tednih med tema dnevoma.
+
+Program začne z definicijo funkcije prestopno_leto, ki ugotovi, ali je določeno leto prestopno. Pravilo za prestopna leta je naslednje: leto je prestopno, če je deljivo s 4, razen če je deljivo s 100, vendar ni deljivo s 400. Ta funkcija omogoča, da program pravilno upošteva dodatni dan v februarju prestopnega leta.
+
+Funkcija mesec_dnevi vrne število dni v določenem mesecu, pri čemer preveri, ali je leto prestopno. Na primer, februar ima v prestopnem letu 29 dni, sicer pa 28. Število dni v drugih mesecih je shranjeno v seznamu.
+
+Funkcija dan_v_tednu izračuna dan v tednu za določen datum. Začne tako, da sešteje dni iz trenutnega meseca in vseh prejšnjih mesecev v letu. Nato doda dneve iz prejšnjih let, pri čemer upošteva 365 dni za vsako leto, dodatne dni za prestopna leta in odšteje dneve za stoletja, ki niso prestopna. Končni rezultat je skupno število dni, deljeno z 7, kar vrne dan v tednu (0 = nedelja, 1 = ponedeljek itd.).
+
+Funkcija druga_nedelja določi datum druge nedelje v določenem mesecu. Izračuna dan v tednu za prvi dan v mesecu in določi prvo nedeljo tako, da najde zamik od prvega dne. Dodatek 7 dni k prvi nedelji vrne datum druge nedelje.
+
+Funkcija tretja_nedelja deluje podobno kot druga_nedelja, vendar doda 7 dni k drugi nedelji, da vrne datum tretje nedelje.
+
+Glavna funkcija parent_gap izračuna razmak v tednih med Materinskim in Očetovim dnevom. Funkcija kliče druga_nedelja za maj in tretja_nedelja za junij. Razmak se izračuna tako, da se seštejejo dnevi od Materinskega dne do konca maja in dnevi v juniju do Očetovega dne. Rezultat je deljen z 7, kar vrne število tednov.
+
+Na koncu program sprejme vhodno leto od uporabnika, pokliče funkcijo parent_gap in izpiše rezultat.

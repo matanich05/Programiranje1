@@ -1,0 +1,9 @@
+Ta program rešuje problem stiskanja zaporednih znakov v nizih tako, da število zaporednih pojavitev vsakega znaka zapiše pred znak sam. Program je sestavljen iz dveh glavnih delov: funkcije za stiskanje posamezne vrstice in glavne funkcije, ki obdeluje več vrstic vhoda.
+
+Funkcija compress_line je osrednji del programa, ki prejme eno vrstico kot vhodni podatek. Zanka v funkciji prehaja skozi vse znake v vrstici, začenši z drugim znakom, in primerja trenutni znak z njegovim predhodnikom. Če sta znaka enaka, se števec pojavitve (count) poveča. Če pa sta različna, se število zaporednih pojavitev trenutnega znaka skupaj z znakom doda v seznam rezultatov. Na koncu zanke je treba dodati še zadnji znak in njegovo število, saj se zanka zaključi pred tem korakom. Funkcija nato združi vse elemente v seznamu rezultatov v en niz in ga vrne.
+
+Glavna funkcija main skrbi za branje več vrstic vhoda. Program bere vrstice v neskončni zanki, dokler uporabnik ne zaključi vnosa ali dokler ne naleti na konec datoteke (EOF). Vse prebrane vrstice se shranijo v seznam. Nato za vsako vrstico v seznamu pokliče funkcijo compress_line, ki jo obdela in izpiše rezultat. Na ta način se vsaka vrstica stisne in prikaže na izhodu.
+
+Program deluje tako, da za vsako vrstico vhoda natančno zabeleži zaporedne pojavitve posameznih znakov in jih ustrezno stisne, pri čemer ohrani vrstni red znakov v vrstici. Na primer, niz aaaabbbcccddeee se stisne v 5a3b2c3d3e, kjer je število pred vsakim znakom enako številu zaporednih pojavitev tega znaka. Program je robusten, saj upošteva vse možne dolžine vrstic in njihove različne vsebine, dokler so v formatu z malimi črkami.
+
+Uporaba je preprosta, saj program prebere vhodne podatke, jih obdela z uporabo opisanih funkcij in nato izpiše rezultat v ustrezno stisnjeni obliki. Rezultati so pravilni za vse dane testne primere, ki vključujejo vrstice z različnimi zaporednimi znaki, njihovo različno dolžino in kombinacije znakov.
